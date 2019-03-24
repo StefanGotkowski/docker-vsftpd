@@ -4,6 +4,8 @@
 # License : GPL v2                                    #
 #######################################################
 
+VERSION=1.0
+
 getMessageWithTime()
 {
   echo -e $(date +'[%d/%m/%y - %H:%M:%S] ') $1
@@ -39,6 +41,7 @@ if [ ! -e /etc/vsftpd/configs/vsftpd.conf ]; then
   # Copy config/user files
   cp /etc/vsftpd/vsftpd.conf -R -u -p /etc/vsftpd/configs/vsftpd.conf
   cp /etc/vsftpd/user_list -R -u -p /etc/vsftpd/configs/user_list
+
 
   # Function to change state/value of parameters in config files
   changeParam()
@@ -76,7 +79,7 @@ if [ ! -e /etc/vsftpd/configs/vsftpd.conf ]; then
       set -- "$i"
       IFS=":"; declare -a Array=($*)
       IFS=""
-      adduser ${Array[0]}
+      useradd ${Array[0]}
       echo "${Array[0]}":"${Array[1]}" | chpasswd
       getMessageWithTime "|--> User [${Array[0]}] added with password [${Array[1]}]."
     done
