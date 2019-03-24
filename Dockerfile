@@ -10,9 +10,10 @@ LABEL description="vsftpd + Fedora 29" \
 RUN yum install -y vsftpd &&\
     yum clean all
 
-RUN mkdir /var/ftp/shared &&\
-    mkdir /var/certificates &&\
+RUN mkdir /var/certificates &&\
     mkdir /etc/vsftpd/configs
+
+RUN chmod 757 -R /var/ftp
 
 VOLUME /var/ftp
 VOLUME /var/log
@@ -29,6 +30,9 @@ ENV pam_service_name=vsftpd
 ENV listen_ipv6=YES
 ENV local_enable=YES
 ENV local_root=/var/ftp
+ENV download_enable=YES
+ENV write_enable=YES
+ENV dirmessage_enable=YES
 
 COPY vsftpd.conf /etc/vsftpd/
 
