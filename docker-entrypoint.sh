@@ -4,8 +4,6 @@
 # License : GPL v2                                    #
 #######################################################
 
-VERSION=1.0
-
 getMessageWithTime()
 {
   echo -e $(date +'[%d/%m/%y - %H:%M:%S] ') $1
@@ -56,10 +54,6 @@ if [ ! -e /etc/vsftpd/configs/vsftpd.conf ]; then
   }
 
   getMessageWithTime "# Configuring settings of VSFTPD..."
-
-  # First launch - basics
-  changeParam background NO
-  changeParam userlist_file /etc/vsftpd/configs.user_list
 
   # Change all configs
   for i in "${configs[@]}"
