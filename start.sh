@@ -1,4 +1,9 @@
 #/bin/bash
+#######################################################
+# Author  : Stefan Gotkowski                          #
+# Version : 1.0                                       #
+# License : GPL v2                                    #
+#######################################################
 
 getMessageWithTime()
 {
