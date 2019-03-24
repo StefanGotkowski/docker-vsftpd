@@ -1,9 +1,8 @@
 FROM fedora:29
 
-MAINTAINER Stefan Gotkowski <stefan.gotkowski@gmail.com>
-
-LABEL Description="vsftpd + Fedora 29" \
-      License="GNU v2"
+LABEL description="vsftpd + Fedora 29" \
+      maintainer="stefan.gotkowski@gmail.com" \
+      license="GNU v2"
 
 # Install service
 #RUN yum -y update
