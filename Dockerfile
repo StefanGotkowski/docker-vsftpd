@@ -17,7 +17,7 @@ RUN mkdir /var/ftp/shared &&\
 # Add config file
 ADD vsftpd.conf /etc/vsftpd/vsftpd.conf
 
-# Add startup (+ user configurations)
+# Add startup
 ADD start.sh /usr/sbin/start.sh
 RUN chmod +x /usr/sbin/start.sh
 
@@ -25,7 +25,7 @@ RUN chmod +x /usr/sbin/start.sh
 RUN mkdir -p /var/run/vsftpd/empty
 
 # Open port
-EXPOSE 21
+EXPOSE 20 21
 
 # Startup script
 ENTRYPOINT ["sh", "/usr/sbin/start.sh"]
