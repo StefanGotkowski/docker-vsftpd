@@ -40,7 +40,6 @@ if [ ! -e /etc/vsftpd/configs/vsftpd.conf ]; then
   cp /etc/vsftpd/vsftpd.conf -R -u -p /etc/vsftpd/configs/vsftpd.conf
   cp /etc/vsftpd/user_list -R -u -p /etc/vsftpd/configs/user_list
 
-
   # Function to change state/value of parameters in config files
   changeParam()
   {
