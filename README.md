@@ -35,7 +35,7 @@ docker run --name ftp -tdi -p 21:21 -p 21100-21110:21100-21110 \
 -v /data/log/ftp:/var/log \
 -v /data/certificates:/var/certificates \
 -v /data/vsftpd:/etc/vsftpd/configs \
-stefang/vsftpd
+stefang/docker-vsftpd
 ```
 
 ### Chech Errors
