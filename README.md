@@ -4,39 +4,57 @@ vsftpd + Fedora 29
 
 ### Service
  
-`vsftpd (v3.0.3)`
+`vsftpd` (v3.0.3)
 
-### Arguments
+### Environments
 
 `USERS` multiple users with passwords ( exemple: ```-e USERS="user1:pass1;user2:pass2"``` ) 
 
-`VSFTPD_CONFIG` please check all vsftpd [configs](http://vsftpd.beasts.org/vsftpd_conf.html) ( exemple: ```-e listen="NO"``` ) 
+`OTHERS` please check all vsftpd [configs](http://vsftpd.beasts.org/vsftpd_conf.html) ( example: ```-e anonymous_enable="YES"``` ) 
       
-### Launch exemple
+### Basic FTP
 
 ```bash 
-docker run --name ftp -tdi -p 21:21 -p 21100-21110:21100-21110 \
- -e listen="NO" \
- -e listen_ipv6="YES" \
- -e local_root="/var/ftp" \
- -e local_umask="022" \
- -e local_enable="YES" \
- -e write_enable="YES" \
- -e dirmessage_enable="YES" \
- -e pam_service_name="vsftpd" \
- -e vsftpd_log_file="/var/log/vsftpd.log" \
- -e ssl_enable="YES" \
- -e rsa_cert_file=/var/certificates/cert.pem \
- -e rsa_private_key_file=/var/certificates/priv.pem \
- -e pasv_enable="YES" \
- -e pasv_min_port="21100" \
- -e pasv_max_port="21110" \
- -e USERS="user1:pass1;user2:pass2" \
--v /data/www:/var/ftp \
--v /data/logs/ftp:/var/log \
--v /data/certificates:/var/certificates \
--v /data/vsftpd:/etc/vsftpd/configs \
-stefang/docker-vsftpd
+docker run --name ftp -tdi \
+ -p 21:21 -p 21100-21110:21100-21110 \
+ -e USERS="user1:pass1" \
+stefang/vsftpd
+```
+
+### All Volumes
+
+`/var/ftp` directory of ftp up/down files
+`/var/log` all logs
+`/var/certificates` directory for certficates
+`/etc/vsftpd/configs` vsftpd.conf/user_list files
+
+### [Example] FTP with environments
+
+```bash 
+docker run --name ftp -tdi \
+ -p 21:21 -p 21100-21110:21100-21110 \
+   -e USERS="user1:pass1" \
+   -e ssl_enable="YES" \
+   -e rsa_cert_file=/var/certificates/cert.pem \
+   -e rsa_private_key_file=/var/certificates/priv.pem \
+stefang/vsftpd
+```
+
+
+### [Example] FTP with volumes and environments
+
+```bash 
+docker run --name ftp -tdi \
+ -p 21:21 -p 21100-21110:21100-21110 \
+   -e USERS="user1:pass1" \
+   -e ssl_enable="YES" \
+   -e rsa_cert_file=/var/certificates/cert.pem \
+   -e rsa_private_key_file=/var/certificates/priv.pem \
+   -e xferlog_enable="NO" \
+ -v /data/shared:/var/ftp \
+ -v /data/log/ftp:/var/log \
+ -v /data/certificates:/var/certificates \
+stefang/vsftpd
 ```
 
 ### Chech Errors
@@ -54,4 +72,4 @@ Users and password doesn't support characters like : and ;
 GNU General Public License v2.0
 
     
-[Build state](https://cloud.docker.com/repository/docker/stefang/docker-vsftpd/builds)
+[Build state](https://cloud.docker.com/repository/docker/stefang/vsftpd/builds)
