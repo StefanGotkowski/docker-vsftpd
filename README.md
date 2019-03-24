@@ -50,7 +50,7 @@ docker run --name ftp -tdi \
    -e ssl_enable="YES" \
    -e rsa_cert_file=/var/certificates/cert.pem \
    -e rsa_private_key_file=/var/certificates/priv.pem \
-   -e xferlog_enable="NO" \
+   -e xferlog_enable="YES" \
  -v /data/shared:/var/ftp \
  -v /data/log/ftp:/var/log \
  -v /data/certificates:/var/certificates \
