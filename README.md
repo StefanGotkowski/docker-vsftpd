@@ -32,8 +32,8 @@ docker run --name ftp -tdi -p 21:21 -p 21100-21110:21100-21110 \
  -e pasv_min_port="21100" \
  -e pasv_max_port="21110" \
  -e USERS="user1:pass1;user2:pass2" \
--v /data/shared:/var/ftp \
--v /data/log/ftp:/var/log \
+-v /data/www:/var/ftp \
+-v /data/logs/ftp:/var/log \
 -v /data/certificates:/var/certificates \
 -v /data/vsftpd:/etc/vsftpd/configs \
 stefang/docker-vsftpd
