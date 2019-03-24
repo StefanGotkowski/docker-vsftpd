@@ -23,6 +23,7 @@ docker run --name ftp -tdi -p 21:21 -p 21100-21110:21100-21110 \
  -e local_enable="YES" \
  -e write_enable="YES" \
  -e dirmessage_enable="YES" \
+ -e pam_service_name="vsftpd" \
  -e vsftpd_log_file="/var/log/vsftpd.log" \
  -e ssl_enable="YES" \
  -e rsa_cert_file=/var/certificates/cert.pem \
