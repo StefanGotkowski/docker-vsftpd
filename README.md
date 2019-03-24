@@ -53,4 +53,4 @@ Users and password doesn't support characters like : and ;
 GNU General Public License v2.0
 
     
-[Build state](https://hub.docker.com/r/stefang/web/builds/)
+[Build state](https://cloud.docker.com/repository/docker/stefang/docker-vsftpd/builds)
