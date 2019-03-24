@@ -4,28 +4,27 @@ LABEL description="vsftpd + Fedora 29" \
       maintainer="stefan.gotkowski@gmail.com" \
       license="GNU v2"
 
+ENV VERSION 1.0
+
 # Install service
 #RUN yum -y update
-RUN yum install -y vsftpd
-RUN yum clean all
+RUN yum install -y vsftpd &&\
+    yum clean all
 
 # Create all dirs
 RUN mkdir /var/ftp/shared &&\
     mkdir /var/certificates &&\
     mkdir /etc/vsftpd/configs
 
-# Add config file
-ADD vsftpd.conf /etc/vsftpd/vsftpd.conf
+VOLUME /var/ftp 
+VOLUME /var/log 
+VOLUME /var/certificates 
+VOLUME /etc/vsftpd/configs 
 
-# Add startup
-ADD start.sh /usr/sbin/start.sh
-RUN chmod +x /usr/sbin/start.sh
+COPY vsftpd.conf /etc/vsftpd/
 
-# secure_chroot_dir
-RUN mkdir -p /var/run/vsftpd/empty
+COPY docker-entrypoint.sh /usr/local/bin/
+RUN ln -s usr/local/bin/docker-entrypoint.sh
+ENTRYPOINT ["docker-entrypoint.sh"]
 
-# Open port
 EXPOSE 20 21
-
-# Startup script
-ENTRYPOINT ["sh", "/usr/sbin/start.sh"]
