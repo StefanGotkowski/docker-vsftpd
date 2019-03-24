@@ -1,8 +1,10 @@
-#/bin/bash
+#!/bin/bash
 #######################################################
 # Author  : Stefan Gotkowski                          #
 # License : GPL v2                                    #
 #######################################################
+
+VERSION=1.0
 
 getMessageWithTime()
 {
@@ -57,7 +59,7 @@ if [ ! -e /etc/vsftpd/configs/vsftpd.conf ]; then
 
   # First launch - basics
   changeParam background NO
-  changeParam userlist_file /etc/vsftpd/configs.user_list 
+  changeParam userlist_file /etc/vsftpd/configs.user_list
 
   # Change all configs
   for i in "${configs[@]}"
