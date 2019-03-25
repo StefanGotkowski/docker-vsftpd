@@ -48,7 +48,7 @@ if [ ! -e /etc/vsftpd/configs/vsftpd.conf ]; then
   {
     l=$(grep -n "$1=" /etc/vsftpd/configs/vsftpd.conf | head -n 1 | cut -d: -f1)
     if [ $l ]; then
-      sed -i "${l}s{.*{$1=$2"{ /etc/vsftpd/configs/vsftpd.conf
+      sed -i "${l}s@.*@$1=$2"@ /etc/vsftpd/configs/vsftpd.conf
       getMessageWithTime "|--> Set config [$1=$2]."
     else
       getMessageWithTime "|--> [ERROR]\tInvalid parameter [$1]."
