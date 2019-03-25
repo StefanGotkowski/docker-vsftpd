@@ -24,8 +24,11 @@ stefang/vsftpd
 ### All Volumes
 
 `/var/ftp` directory of ftp up/down files
+
 `/var/log` all logs
+
 `/var/certificates` directory for certficates
+
 `/etc/vsftpd/configs` vsftpd.conf/user_list files
 
 ### [Example] FTP with environments
