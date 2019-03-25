@@ -32,11 +32,10 @@ stefang/vsftpd
 
 ```bash 
 docker run --name ftp -tdi \
- -p 21:21 -p 21100-21110:21100-21110 \
+ -p 18:21 -p 21100-21110:21100-21110 \
    -e USERS="user1:pass1" \
-   -e ssl_enable="YES" \
-   -e rsa_cert_file=/var/certificates/cert.pem \
-   -e rsa_private_key_file=/var/certificates/priv.pem \
+   -e connect_from_port_20=YES \
+   -e hide_ids={pub} \
 stefang/vsftpd
 ```
 
