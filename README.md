@@ -63,7 +63,9 @@ docker logs ftp
 
 ### Potential error
 
-Users and password doesn't support characters like : and ;
+> Users and password doesn't support characters like : and ;
+
+> Bad config file after removing container (`docker volumes prune`) 
     
 ### License
 
