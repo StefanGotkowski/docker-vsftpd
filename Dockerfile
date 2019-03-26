@@ -15,11 +15,6 @@ RUN mkdir /var/certificates &&\
 
 RUN chmod 757 -R /var/ftp
 
-VOLUME /var/ftp
-VOLUME /var/log
-VOLUME /var/certificates
-VOLUME /etc/vsftpd/configs
-
 ENV pasv_enable=YES
 ENV pasv_min_port=21100
 ENV pasv_max_port=21110
