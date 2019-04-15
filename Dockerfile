@@ -28,7 +28,6 @@ ENV local_root=/var/ftp
 ENV download_enable=YES
 ENV write_enable=YES
 ENV dirmessage_enable=YES
-ENV dirmessage_enable=YES
 ENV local_umask=022
 
 COPY vsftpd.conf /etc/vsftpd/
