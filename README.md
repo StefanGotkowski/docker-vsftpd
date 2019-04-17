@@ -35,7 +35,7 @@ stefang/vsftpd
 
 ```bash 
 docker run --name ftp -tdi \
- -p 18:21 -p 21100-21110:21100-21110 \
+ -p 21:21 -p 21100-21110:21100-21110 \
    -e USERS="user1:pass1" \
    -e connect_from_port_20=YES \
 stefang/vsftpd
